@@ -1,0 +1,28 @@
+# Build artifacts (rendered from didgeridooMouthpiece.scad — regenerate as needed)
+*.stl
+*.3mf
+*.gcode
+*.amf
+*.obj
+
+# OpenSCAD scratch/backup
+*.scad.bak
+*.scad~
+*.scad.swp
+
+# Editor / IDE
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Local media (photos / videos for documentation, never committed)
+media/
+
+# OS junk
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+desktop.ini
