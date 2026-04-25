@@ -6,6 +6,12 @@ Acoustically tuned, support-free FDM printable, beeswax-finishable. Designed in 
 
 ---
 
+## Don't have a 3D printer?
+
+You can order PVCdidge from [Slant 3D's print-on-demand store](https://teleportpod.com/portals/profile/PVCdidge) — they print in PETG and ship to you. All three pipe-size variants (DN40, DN50, 1.5″ Schedule 40) are listed there.
+
+---
+
 ## Quick start
 
 1. Install [OpenSCAD](https://openscad.org/) (free, Linux / macOS / Windows).
