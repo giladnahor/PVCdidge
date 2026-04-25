@@ -28,8 +28,8 @@ Pre-rendered STLs are not committed to the repo — render the variant you need 
 
 | Variant | Pipe spec | Mouth ID | Best for |
 |---|---|---|---|
-| **40 mm DIN PVC** | 40 mm OD / 36 mm ID metric | 30 mm | Beginners, intermediate. Most common metric plumbing pipe in Europe and Asia. |
-| **50 mm DIN PVC** | 50 mm OD / 46 mm ID metric | 30 mm | Deeper drone, advanced players. Larger bore = fuller low end. |
+| **DN40 PVC** | 40 mm OD / 36 mm ID metric | 30 mm | Beginners, intermediate. Most common metric plumbing pipe in Europe and Asia. |
+| **DN50 PVC** | 50 mm OD / 46 mm ID metric | 30 mm | Deeper drone, advanced players. Larger bore = fuller low end. |
 | **1.5″ Schedule 40** | 48.26 mm OD / 40.89 mm ID | 30 mm | US makers — fits any hardware-store 1.5″ Schedule 40 pipe. |
 
 Mouth opening stays at 30 mm across all variants — your lips feel the same regardless of pipe size. Only the joint geometry changes to match the pipe.

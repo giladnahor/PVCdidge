@@ -75,7 +75,7 @@ The most-engaged 3D-printed didgeridoo projects on Printables / MakerWorld / Thi
 - [Didgeridoo Mouthpiece for DIN 40/50 on Printables](https://www.printables.com/model/62916-didgeridoo-mouthpiece)
 - The closest analog to PVCdidge in geometry intent
 - Recommends "30 mm for DIN40 (beginners), 38 mm for DIN50 (advanced)"
-- Sized for European metric plumbing pipes (the same 40 mm and 50 mm DIN that PVCdidge supports)
+- Sized for European metric plumbing pipes (the same DN40 and DN50 standards that PVCdidge supports)
 
 ### Modgeridoo (modular)
 
