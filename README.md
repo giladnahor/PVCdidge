@@ -86,7 +86,9 @@ Open `didgeridooMouthpiece.scad` in OpenSCAD's Customizer for full control. High
 
 ## Inspiration & references
 
-**Acoustics**
+For the full annotated bibliography — including geometry-decision rationales, acoustic physics, slicer technique sources, and material/hygiene research — see [**RESEARCH.md**](RESEARCH.md).
+
+**Acoustics (the most important reference)**
 - Joe Wolfe et al., UNSW — [What Makes a Good Didgeridoo](https://www.phys.unsw.edu.au/jw/GoodDidj.html)
 
 **Pipe specifications**

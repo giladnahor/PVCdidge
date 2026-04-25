@@ -8,6 +8,7 @@ Single-file OpenSCAD parametric model of a didgeridoo mouthpiece that snap-fits 
 
 - `didgeridooMouthpiece.scad` — the model (only source file)
 - `README.md` — public-facing documentation
+- `RESEARCH.md` — annotated bibliography behind v1.0's geometry decisions; consult before changing parameter defaults
 - `LICENSE` — CC BY-NC 4.0
 
 STLs are gitignored — render the variant you need from source.
