@@ -19,9 +19,10 @@ The design follows the same research lineage as the mouthpiece (see `RESEARCH.md
 
 - **UNSW / Wolfe** — sharp impedance peaks in the 1–2 kHz band are the strongest predictor of subjectively bad didgeridoos. These peaks are caused by abrupt cross-section changes in the bore. The same physics applies at *both* ends of the pipe; the mouthpiece smooths the cup→pipe transition, and the bell smooths the pipe→radiating-mouth transition.
 - **Didge Project (PVC DIY guide)** — calls out flared bell ends and rasp-tapered bell-end interiors as the standard fix for PVC's harsh harmonics. Our printed bell is the support-free, repeatable version of that fix.
-- **General horn acoustics** — an exponential flare is the textbook impedance-matching horn shape: every cross-section change is proportional, so there's no localised reflection along the flare itself. On a short bell added to a long cylindrical pipe, the bell's job is primarily to **smooth the open-end reflection** (the pipe sees a gradually growing air column instead of an abrupt jump to free space) — not to act as a stand-alone radiating horn. Tractrix would be a marginal acoustic improvement at significant parametric complexity; plain cone reintroduces a kink at the pipe joint that the model otherwise eliminates.
+- **General horn acoustics** — an exponential flare is the textbook impedance-matching horn shape: every cross-section change is proportional, so there's no localised reflection *along the flare itself*. On a short bell added to a long cylindrical pipe, the bell's job is primarily to **smooth the open-end reflection** (the pipe sees a gradually growing air column instead of an abrupt jump to free space) — not to act as a stand-alone radiating horn. Webster cutoff at defaults is `fc ≈ 430 Hz`, well above the didge fundamental (~75 Hz); the bell helps higher harmonics radiate and softens the bore-end reflection, but doesn't horn-load the drone.
+- **Junction discontinuity is real but small.** All flare profiles starting at a cylindrical pipe have a first-derivative discontinuity at the junction (the cylinder's slope is 0, the flare's initial slope is non-zero). The exponential's initial slope `m · r₀ ≈ 0.24` is roughly half of what a comparable cone would have (`≈ 0.47`), and the `offset(r) offset(-r)` smoothing softens the geometric kink further. The honest framing is "exponential has a smaller, smoother-onset junction discontinuity than a cone of comparable mouth diameter" — not "exponential is kink-free." Tractrix improves on exponential at the junction too, by a similar fractional amount, at significant parametric complexity cost — not worth the engineering overhead on this instrument.
 
-`RESEARCH.md` does not currently have a dedicated bell-end section. Adding one as part of this work (§2.5 or §9.5 — placement to be decided during implementation).
+A "Bell-end acoustics" subsection has been added to `RESEARCH.md` §1, covering the Webster horn equation, junction-discontinuity comparison between cone/exponential/tractrix profiles, and the Levine–Schwinger end correction.
 
 ## Geometry
 
@@ -127,6 +128,7 @@ Recommended print settings carry over from the mouthpiece (PETG, ≥4 perimeters
 ## Sanity checks (asserts in code)
 
 - `bell_mouth_dia > pipe_inner_dia` — bell must flare outward.
+- `bell_mouth_dia <= 200` — soft upper bound; beyond this gets unprintable on most consumer beds and is beyond the range any traditional didge uses.
 - `bell_wall_top >= 1.5` — printability minimum.
 - `taper_end_wall >= 0.4` — printability minimum.
 - `bell_height > 2 * rim_r` — must have room for the flare below the fillet.
@@ -149,8 +151,7 @@ These are deliberately *not* part of the v1 bell:
 - **Threaded connection** (Modgeridoo-style). Snap-fit only; consistent with the mouthpiece.
 - **Direct acoustic measurement** of the printed bell vs. the bare pipe end (UNSW-style input-impedance sweep). Open question across the whole project, listed in `RESEARCH.md` §9.
 
-## Open questions / decisions deferred to implementation
+## Open questions / decisions deferred
 
-- Whether to add the bell-end section to `RESEARCH.md` at top level (a new §10) or as a sub-section under §2 (Player preferences) — placement is editorial.
 - Whether to add a "bell-mouth oval" custom mode using a non-axisymmetric extrusion. Out of scope for v1 but worth a stub note.
-- README photo: the project's README currently shows the mouthpiece; the bell rendering should be added alongside.
+- README photo: the project's README does not currently show a photo of the printed bell; one should be added once the part has been printed and assembled.

@@ -26,6 +26,40 @@ Wolfe's group measured the input impedance and output sound spectrum of 38 didge
 - [Didgeridoo physics overview (UNSW)](https://www.phys.unsw.edu.au/jw/dij.html)
 - [How does a didgeridoo work? (UNSW)](https://www.phys.unsw.edu.au/jw/Didjeridu.html)
 
+### Bell-end acoustics — smoothing the radiating-end transition
+
+Wolfe's argument about "smooth impedance matching" applies symmetrically to both ends of the bore. The mouthpiece smooths the lip→bore transition; the **bell** smooths the bore→free-air transition. A bare-pipe open end is an abrupt acoustic discontinuity — the air column impedance steps directly to free-space radiation impedance, producing a large standing-wave reflection back into the bore. This reflection both colours the timbre (harsh harmonics) and reduces radiation efficiency at the bell.
+
+A flared bell *gradually* matches the bore impedance to free space over some length, replacing the step with a smooth ramp. The classical analysis is the **Webster horn equation** (Webster, 1919): for an axisymmetric horn of cross-sectional area `S(x)`,
+
+> ∂²p/∂x² + (1/S)·dS/dx · ∂p/∂x + (ω/c)² · p = 0
+
+For an **exponential horn** `S(x) = S₀ · exp(m·x)`, this becomes a constant-coefficient equation with a defined cutoff frequency `ωc = m·c/2` (so `fc = m·c/(4π)`). Below `fc` the horn is reactive (lossy/non-radiating); above it, the horn approximates a perfect impedance transformer to radiation impedance.
+
+For a *short* bell appended to a long cylindrical pipe (like a didgeridoo), the cutoff calculation overstates what the bell can do — the role of the bell is primarily to smooth the open-end reflection, not to convert the whole pipe into a horn. For PVCdidge's defaults (DN40 pipe, ~105 mm rim, 80 mm flare, m ≈ 15.7 /m for the inner radius profile), the Webster cutoff lands at `fc ≈ 430 Hz`. The didge drone fundamental is much lower (~70–80 Hz), so the bell doesn't horn-load the fundamental at all — it works by smoothing the bore-to-free-air impedance transition, which improves the radiation efficiency of higher harmonics and softens the standing-wave reflection back into the bore.
+
+Profile choice still matters at the pipe junction:
+
+- **Conical bell** — has the largest slope discontinuity at the junction: the cone's wall has constant slope `(r_mouth − r₀) / L` from the moment it leaves the cylindrical pipe (slope 0). For PVCdidge's mouth/flare-length defaults the cone kink would be `≈ 0.47` (~25° from vertical). This is the abrupt-cross-section feature UNSW's measurements identified as the cause of plasticky 1–2 kHz peaks. Worst profile choice for this reason.
+- **Exponential bell** — also has a slope discontinuity at the junction (the cylindrical pipe has slope 0, the flare has initial slope `m · r₀`), but the discontinuity is smaller by roughly a factor of two for comparable mouth diameters — `≈ 0.24` (~13.5° from vertical) at PVCdidge defaults. Inside the flare the slope grows smoothly with cross-section, so the only acoustic discontinuity is the one at the junction; everywhere else the profile is reflection-minimising. Standard choice for brass and audio horns; used by PVCdidge's bell.
+- **Tractrix bell** — derived as the curve where every cross-section is acoustically matched to a spherical wave from a virtual source at the horn's mouth. Reduces but does not eliminate the junction discontinuity (the tractrix starts with a finite slope too, just smaller again than the exponential's); the audible difference vs. exponential is small on short instruments and the parametric complexity is significantly higher. Frequently used in high-end audio horn loudspeakers.
+
+A truly zero-kink junction would require the bore profile and its derivative to both match the cylindrical pipe at `y = 0` — i.e., a profile that *starts* tangent to vertical (`dr/dy = 0` at the junction) and then accelerates outward. This is doable (Hermite splines, hyperbolic-cosine profiles, etc.) but adds parametric and computational cost. The exponential's "small kink with smooth interior" is a reasonable engineering compromise; the `offset(r) offset(-r)` smoothing further softens the junction geometrically.
+
+### End correction
+
+A flared open end adds an effective length to the air column (an "end correction" of roughly `0.6 · r_mouth` for a baffled rigid disc, smaller for a flared mouth — see [Levine & Schwinger 1948](https://doi.org/10.1103/PhysRev.73.383) for the rigorous treatment). For PVCdidge's ~52 mm rim radius this is on the order of 20 mm of extra effective length, which lowers the drone fundamental by a few Hz compared to the same pipe with a bare open end. Players should expect the bell-fitted didge to drone slightly flat of the bare-pipe version; tune the pipe length accordingly.
+
+### Bell-end references
+
+- [Webster horn equation — Wikipedia](https://en.wikipedia.org/wiki/Webster_horn_equation) — derivation and assumptions of the classical horn model.
+- [Horn loudspeaker — Wikipedia](https://en.wikipedia.org/wiki/Horn_loudspeaker) — exponential, tractrix, conical, and hyperbolic profile comparison.
+- [Tractrix horns — Hornresp documentation](https://www.hornresp.net/) — practical tractrix design constants used by audio horn builders.
+- Beranek, *Acoustics* (1954) — the canonical textbook chapter on horn radiation impedance and cutoff behaviour.
+- The Didge Project PVC guide (see §5) directly recommends a heat-formed flare on the bell end of PVC didges as the standard fix for the plasticky termination — PVCdidge's printed bell is the support-free, repeatable version of that fix.
+
+**Implication for the PVCdidge bell**: exponential profile (no junction kink), bore starts at pipe ID and flares outward, smoothing the radiating-end impedance the same way the mouthpiece smooths the lip-end one.
+
 ---
 
 ## 2. Player preferences — consensus numerical geometry
